@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
+@theme {
+  /* Custom Breakpoints */
+  --breakpoint-xs: 450px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* Custom Colors */
+  --color-Gray: #71767b;
+  --color-Gray_Light: #e7e9ea;
+  --color-border_Gray: #2f3336;
+  --color-input_Gray: #202327;
+  --color-icon_Blue: #1d9bf0;
+  --color-icon_Green: #00ba7c;
+  --color-icon_Pink: #f91880;
+}
+
 body {
   color: #ededed;
   background: black;
   font-family: Arial, Helvetica, sans-serif;
 }
-

@@ -1,9 +1,10 @@
 'use client';
 import { logo } from '@/assets/common';
-import Navbar from '@/components/common/navbar';
 import { AppShell, Burger, Group, Skeleton, Text } from '@mantine/core';
 import { useDisclosure, useHeadroom } from '@mantine/hooks';
 import Image from 'next/image';
+import Navbar from './Navbar';
+import Aside from './aside/Aside';
 
 export default function Mantine_Layout({
   children,
@@ -39,7 +40,8 @@ export default function Mantine_Layout({
         {children}
         Alt layout – Navbar and Aside are rendered on top on Header and Footer
       </AppShell.Main>
-      <AppShell.Aside p='md'>Aside</AppShell.Aside>
+
+      <Aside />
     </AppShell>
   );
 }

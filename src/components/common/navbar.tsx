@@ -1,17 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Ellipsis,
-  House,
-  Search,
-  Bell,
-  Mail,
-  Bookmark,
-  CircleUserRound,
-  SquarePen,
-  X,
-} from 'lucide-react';
+import { X } from 'lucide-react';
 import { logo, noAvatar } from '@/assets/common';
 import { AppShell, Stack, Text } from '@mantine/core';
 import { usePathname } from 'next/navigation';
@@ -61,6 +51,7 @@ export default function Navbar({ toggle }: Props) {
               const isActive = path === item.link;
               return (
                 <Link
+                  key={item.id}
                   href={item.link}
                   className={cn(
                     'flex items-center gap-4 p-2 rounded-xl hover:bg-white/10 transition-colors duration-200',

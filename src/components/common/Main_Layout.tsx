@@ -1,10 +1,9 @@
 'use client';
-import { logo } from '@/assets/common';
-import { AppShell, Burger, Group, Skeleton, Text } from '@mantine/core';
+import { AppShell } from '@mantine/core';
 import { useDisclosure, useHeadroom } from '@mantine/hooks';
-import Image from 'next/image';
 import Navbar from './Navbar';
 import Aside from './aside/Aside';
+import Header from './Header';
 
 export default function Mantine_Layout({
   children,
@@ -16,30 +15,21 @@ export default function Mantine_Layout({
 
   return (
     <AppShell
-      // layout='alt'
+      layout='alt'
+      header={{ height: 60, collapsed: !pinned, offset: false }}
+      navbar={{ width: 220, breakpoint: 'md', collapsed: { mobile: !opened } }}
       aside={{
         width: 250,
         breakpoint: 'lg',
         collapsed: { desktop: false, mobile: true },
       }}
-      header={{ height: 72, collapsed: !pinned, offset: false }}
-      // withBorder={false}
-      className='flex flex-col w-full min-h-screen'
-      navbar={{ width: 220, breakpoint: 'md', collapsed: { mobile: !opened } }}
+      className='w-full min-h-screen'
     >
-      <AppShell.Header zIndex={50} className='!z-50'>
-        <Group h='100%' px='md'>
-          <Burger opened={opened} onClick={toggle} hiddenFrom='md' size='sm' />
-          <Image src={logo} alt='logo' height={30} width={30} />
-        </Group>
-      </AppShell.Header>
+      <Header opened={opened} toggle={toggle} />
 
       <Navbar toggle={toggle} />
 
-      <AppShell.Main>
-        {children}
-        Alt layout – Navbar and Aside are rendered on top on Header and Footer
-      </AppShell.Main>
+      <AppShell.Main>{children}</AppShell.Main>
 
       <Aside />
     </AppShell>

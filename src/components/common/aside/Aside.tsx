@@ -1,14 +1,14 @@
-'use client'; // Add if this is a Client Component in Next.js
+'use client';
 
 import Link from 'next/link';
 import { AppShell, Stack, Divider, Text, Group } from '@mantine/core';
-import SearchComponent from './Search'; // Renamed for consistency
+import SearchComponent from './Search';
 import Recommendations from './Recommendations';
 import { FOOTER_LINKS } from '@/content/common/aside';
 
 export default function Aside() {
   return (
-    <AppShell.Aside className='!bg-primary p-3 w-full h-full'>
+    <AppShell.Aside className='!bg-primary p-3 !border-[#363636] !border-r-[1px] w-full h-full'>
       <Stack justify='space-between' h='100%' w='100%'>
         {/* Main Content */}
         <Stack gap='md'>
@@ -20,15 +20,13 @@ export default function Aside() {
           <Divider size='xs' w='100%' />
           <Group gap={5} wrap='wrap' justify='flex-start'>
             {FOOTER_LINKS.map((link) => (
-              <>
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className='text-Gray text-sm hover:underline'
-                >
-                  {link.label}
-                </Link>
-              </>
+              <Link
+                key={link.label}
+                href={link.href}
+                className='text-Gray text-sm hover:underline'
+              >
+                {link.label}
+              </Link>
             ))}
           </Group>
           <Text fz={'sm'}>

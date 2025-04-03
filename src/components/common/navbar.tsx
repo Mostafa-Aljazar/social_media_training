@@ -16,7 +16,10 @@ export default function Navbar({ toggle }: Props) {
   const path = usePathname();
 
   return (
-    <AppShell.Navbar className='!bg-primary p-5' aria-label='Main navigation'>
+    <AppShell.Navbar
+      className='!bg-primary p-5 !border-[#363636] !border-l-[1px]'
+      aria-label='Main navigation'
+    >
       <Stack className='w-full h-full'>
         {/* Logo */}
         <Link
@@ -58,8 +61,13 @@ export default function Navbar({ toggle }: Props) {
                     isActive && 'text-purple-500 font-semibold'
                   )}
                 >
-                  <span className={cn(isActive && 'text-purple-500')}>{item.icon}</span>
-                  <Text fz='md' className={cn('tracking-wide', isActive && 'font-bold')}>
+                  <span className={cn(isActive && 'text-purple-500')}>
+                    {item.icon}
+                  </span>
+                  <Text
+                    fz='md'
+                    className={cn('tracking-wide', isActive && 'font-bold')}
+                  >
                     {item.name}
                   </Text>
                 </Link>

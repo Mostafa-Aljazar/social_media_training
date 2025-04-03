@@ -1,7 +1,8 @@
 module.exports = {
-  plugins: {
-    'postcss-preset-mantine': {},
-    'postcss-simple-vars': {
+  plugins: [
+    'postcss-preset-mantine',
+    'postcss-simple-vars',
+    {
       variables: {
         'mantine-breakpoint-xs': '450px',
         'mantine-breakpoint-sm': '640px',
@@ -10,8 +11,5 @@ module.exports = {
         'mantine-breakpoint-xl': '1280px',
       },
     },
-    '@tailwindcss/postcss': {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  ],
 };

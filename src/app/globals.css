@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Custom Breakpoints */
@@ -9,6 +9,7 @@
   --breakpoint-xl: 1280px;
 
   /* Custom Colors */
+  --color-primary: #272727;
   --color-Gray: #71767b;
   --color-Gray_Light: #e7e9ea;
   --color-border_Gray: #2f3336;
@@ -19,7 +20,7 @@
 }
 
 body {
-  color: #ededed;
-  background: black;
+  color: #ffffff;
+  background: #272727;
   font-family: Arial, Helvetica, sans-serif;
 }

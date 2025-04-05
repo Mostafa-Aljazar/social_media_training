@@ -29,7 +29,7 @@ export default function Mantine_Layout({
 
       <Navbar toggle={toggle} />
 
-      <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Main mt={60}>{children}</AppShell.Main>
 
       <Aside />
     </AppShell>

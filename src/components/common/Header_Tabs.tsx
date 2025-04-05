@@ -20,7 +20,7 @@ export default function Header_Tabs() {
         className={cn(
           'transition-all duration-300 ease-in-out',
           activeTab === tabKey
-            ? '!text-white !font-bold '
+            ? '!text-purple-500 !font-bold '
             : '!font-semibold !text-[#817C74]'
         )}
       >
@@ -29,7 +29,7 @@ export default function Header_Tabs() {
       <Divider
         orientation='horizontal'
         className={cn(
-          ' transition-all duration-300 ease-in-out transform -translate-x-1/2 h-[3px] rounded-t-lg bg-white',
+          ' transition-all duration-300 ease-in-out transform -translate-x-1/2 h-[3px] rounded-t-lg bg-purple-500',
           activeTab === tabKey ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
           'absolute bottom-0 left-1/2 w-16'
         )}

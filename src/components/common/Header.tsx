@@ -2,8 +2,10 @@
 import { logo } from '@/assets/common';
 import { AppShell, Burger, Flex, Group, Stack } from '@mantine/core';
 import Image from 'next/image';
-import React from 'react';
+import React, { use } from 'react';
 import Header_Tabs from './Header_Tabs';
+import { usePathname } from 'next/navigation';
+import { ROUTES } from '@/content/routes';
 
 type Props = {
   opened: boolean;
@@ -11,6 +13,7 @@ type Props = {
 };
 
 export default function Header({ opened, toggle }: Props) {
+  const path = usePathname();
   return (
     <AppShell.Header
       zIndex={50}
@@ -38,7 +41,7 @@ export default function Header({ opened, toggle }: Props) {
           align='center'
           className='flex-grow flex-1 h-full'
         >
-          <Header_Tabs />
+          {path === ROUTES.HOME && <Header_Tabs />}
         </Stack>
       </Flex>
     </AppShell.Header>

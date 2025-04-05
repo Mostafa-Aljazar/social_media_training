@@ -1,3 +1,4 @@
+import Feed from '@/components/feed/Feed';
 import Create_Post from '@/components/home/create-post';
 import { Stack } from '@mantine/core';
 import Link from 'next/link';
@@ -13,13 +14,14 @@ export default function Home() {
         <Create_Post />
       </Link>
 
-      {Array(50)
+      <Feed />
+      {/* {Array(50)
         .fill('')
         .map((_, index) => (
           <p key={index}>
             Item {index + 1}: {lorem}
           </p>
-        ))}
+        ))} */}
     </Stack>
   );
 }

@@ -1,6 +1,6 @@
 import logo from './logo.png';
 import noAvatar from './noAvatar.png';
-// import gif from './gif./';
+import noCover from './noCover.png';
 import poll from './poll.png';
 
-export { logo, noAvatar, poll };
+export { logo, noAvatar, poll, noCover };

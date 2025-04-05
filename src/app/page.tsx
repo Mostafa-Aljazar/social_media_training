@@ -1,5 +1,6 @@
 import Create_Post from '@/components/home/create-post';
 import { Stack } from '@mantine/core';
+import Link from 'next/link';
 import React from 'react';
 
 export default function Home() {
@@ -7,14 +8,11 @@ export default function Home() {
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cum harum labore, aliquid atque, ducimus placeat consequuntur aperiam porro ipsa tenetur ipsum possimus aspernatur tempore reprehenderit quibusdam. Delectus, optio totam!';
 
   return (
-    <Stack
-      align='center'
-      justify='center'
-      w={'100%'}
-      h={'100%'}
-      className='!bg-red-500'
-    >
-      <Create_Post />
+    <Stack align='center' justify='center' w={'100%'} h={'100%'} className=''>
+      <Link href='/post/add-post' className='m-5 w-full'>
+        <Create_Post />
+      </Link>
+
       {Array(50)
         .fill('')
         .map((_, index) => (

@@ -5,6 +5,7 @@ import Header from './Header';
 import Navbar from './Navbar';
 import Aside from './aside/Aside';
 import Footer from './Footer';
+import Floating_Add_Post from './Floating_Add_Post';
 
 export default function Mantine_Layout({
   children,
@@ -35,6 +36,8 @@ export default function Mantine_Layout({
       <Aside />
 
       <Footer />
+
+      <Floating_Add_Post />
     </AppShell>
   );
 }

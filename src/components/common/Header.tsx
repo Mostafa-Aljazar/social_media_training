@@ -1,32 +1,20 @@
 'use client';
 import { logo } from '@/assets/common';
-import { AppShell, Burger, Flex, Group, Stack } from '@mantine/core';
+import { AppShell, Flex, Group, Stack } from '@mantine/core';
 import Image from 'next/image';
-import React, { use } from 'react';
 import Header_Tabs from './Header_Tabs';
 import { usePathname } from 'next/navigation';
 import { ROUTES } from '@/content/routes';
 
-type Props = {
-  opened: boolean;
-  toggle: () => void;
-};
-
-export default function Header({ opened, toggle }: Props) {
+export default function Header() {
   const path = usePathname();
   return (
     <AppShell.Header
       zIndex={50}
-      className='!bg-primary shadow-2xl !border-[#363636] !border-b-[1px] ]'
+      className='!bg-primary/90 shadow-2xl !border-[#363636] !border-b-[1px] ]'
     >
       <Flex justify='space-between' align='center' h='100%' px='md'>
         <Group gap='sm' align='center' hiddenFrom='md'>
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            size='md'
-            color={'#71767b'}
-          />
           <Image
             src={logo}
             alt='Twitter logo'

@@ -1,23 +1,24 @@
 'use client';
 import { AppShell } from '@mantine/core';
-import { useDisclosure, useHeadroom } from '@mantine/hooks';
+import { useHeadroom } from '@mantine/hooks';
+import Header from './Header';
 import Navbar from './Navbar';
 import Aside from './aside/Aside';
-import Header from './Header';
+import Footer from './Footer';
 
 export default function Mantine_Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [opened, { toggle }] = useDisclosure();
   const pinned = useHeadroom({ fixedAt: 70 });
 
   return (
     <AppShell
       layout='alt'
       header={{ height: 60, collapsed: !pinned, offset: false }}
-      navbar={{ width: 220, breakpoint: 'md', collapsed: { mobile: !opened } }}
+      footer={{ height: 40, collapsed: !pinned, offset: false }}
+      navbar={{ width: 220, breakpoint: 'md' }}
       aside={{
         width: 250,
         breakpoint: 'lg',
@@ -25,13 +26,15 @@ export default function Mantine_Layout({
       }}
       className='w-full min-h-screen'
     >
-      <Header opened={opened} toggle={toggle} />
+      <Header />
 
-      <Navbar toggle={toggle} />
+      <Navbar />
 
       <AppShell.Main mt={60}>{children}</AppShell.Main>
 
       <Aside />
+
+      <Footer />
     </AppShell>
   );
 }

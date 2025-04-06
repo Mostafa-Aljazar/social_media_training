@@ -1,22 +1,18 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { X } from 'lucide-react';
 import { logo, noAvatar } from '@/assets/common';
 import { AppShell, Stack, Text } from '@mantine/core';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/utility/cn';
 import { Nav_Menu_List } from '@/content/common/navbar';
 
-type Props = {
-  toggle?: () => void;
-};
-
-export default function Navbar({ toggle }: Props) {
+export default function Navbar() {
   const path = usePathname();
 
   return (
     <AppShell.Navbar
+      visibleFrom='md'
       className='!bg-primary p-5 !border-[#363636] !border-l-[1px]'
       aria-label='Main navigation'
     >
@@ -36,16 +32,6 @@ export default function Navbar({ toggle }: Props) {
             priority
           />
         </Link>
-
-        {/* Mobile close button */}
-        {toggle && (
-          <X
-            onClick={toggle}
-            size={25}
-            className='md:hidden self-end text-Gray hover:text-white transition-colors cursor-pointer'
-            aria-label='Close navigation'
-          />
-        )}
 
         {/* Main menu */}
         <Stack justify='space-between' className='h-full'>

@@ -1,7 +1,7 @@
 'use client';
 import { AppShell } from '@mantine/core';
 import { useHeadroom } from '@mantine/hooks';
-import Header from './Header';
+import Header from './header/Header';
 import Navbar from './Navbar';
 import Aside from './aside/Aside';
 import Footer from './Footer';
@@ -36,8 +36,6 @@ export default function Mantine_Layout({
       <Aside />
 
       <Footer />
-
-      <Floating_Add_Post />
     </AppShell>
   );
 }

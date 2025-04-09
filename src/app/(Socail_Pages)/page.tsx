@@ -7,7 +7,13 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <Stack align='center' justify='center' w={'100%'} h={'100%'} className=''>
+    <Stack
+      align='center'
+      justify='center'
+      w={'100%'}
+      h={'100%'}
+      className='!bg-primary'
+    >
       <Link href='/post/add-post' className='m-5 w-full'>
         <Create_Post />
       </Link>

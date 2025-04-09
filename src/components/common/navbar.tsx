@@ -6,6 +6,7 @@ import { AppShell, Stack, Text } from '@mantine/core';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/utility/cn';
 import { Nav_Menu_List } from '@/content/common/navbar';
+import { ROUTES } from '@/content/routes';
 
 export default function Navbar() {
   const path = usePathname();
@@ -37,7 +38,10 @@ export default function Navbar() {
         <Stack justify='space-between' className='h-full'>
           <Stack gap={2}>
             {Nav_Menu_List.map((item) => {
-              const isActive = path === item.link;
+              const isActive =
+                item.link == ROUTES.MESSAGES
+                  ? path.includes(item.link)
+                  : path === item.link;
               return (
                 <Link
                   key={item.id}

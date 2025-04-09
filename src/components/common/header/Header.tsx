@@ -11,7 +11,8 @@ export default function Header() {
   return (
     <AppShell.Header
       zIndex={50}
-      className='!bg-primary/90 shadow-2xl !border-[#363636] !border-b-[1px] ]'
+      className='!bg-red-500/90 shadow-2xl !border-[#363636] !border-b-[1px]'
+      hidden={path.includes(ROUTES.MESSAGES)}
     >
       <Flex justify='space-between' align='center' h='100%' px='md'>
         <Group gap='sm' align='center' hiddenFrom='md'>

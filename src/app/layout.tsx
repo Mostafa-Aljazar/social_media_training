@@ -3,7 +3,6 @@ import './globals.css';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import Providers from '@/providers/providers';
 import type { Metadata } from 'next';
-import Mantine_Layout from '@/components/common/Main_Layout';
 
 export const metadata: Metadata = {
   title: 'Asmar Social Media',
@@ -22,7 +21,7 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>
-          <Mantine_Layout>{children}</Mantine_Layout>
+          <>{children}</>
         </Providers>
       </body>
     </html>

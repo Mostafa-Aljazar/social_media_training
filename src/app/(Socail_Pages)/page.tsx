@@ -1,6 +1,7 @@
 import Floating_Add_Post from '@/components/common/Floating_Add_Post';
 import Feed from '@/components/feed/Feed';
 import Create_Post from '@/components/home/create-post';
+import Stories from '@/components/home/Stories';
 import { Stack } from '@mantine/core';
 import Link from 'next/link';
 import React from 'react';
@@ -14,6 +15,7 @@ export default function Home() {
       h={'100%'}
       className='!bg-primary'
     >
+      <Stories />
       <Link href='/post/add-post' className='m-5 w-full'>
         <Create_Post />
       </Link>

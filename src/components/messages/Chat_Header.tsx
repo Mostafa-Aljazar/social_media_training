@@ -13,7 +13,7 @@ export default function Chat_Header() {
   return (
     <Group
       p={10}
-      top={0}
+      top={-1}
       left={0}
       pos={'sticky'}
       className='bg-primary shadow-2xl'

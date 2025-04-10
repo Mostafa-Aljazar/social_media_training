@@ -16,7 +16,7 @@ export default async function Message_Page({
         m={0}
         w='100%'
         scrollbars='y'
-        className='relative !flex-grow border-e-2 border-Gray'
+        className='relative !flex-grow'
       >
         <Chat_Header />
         <Chat_Messages />

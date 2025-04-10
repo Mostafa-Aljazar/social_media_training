@@ -1,6 +1,6 @@
 import Floating_Add_Post from '@/components/common/Floating_Add_Post';
 import Feed from '@/components/feed/Feed';
-import Create_Post from '@/components/home/story/create-post';
+import Create_Post from '@/components/feed/create-post';
 import Stories from '@/components/home/story/Stories';
 import { Stack } from '@mantine/core';
 import Link from 'next/link';

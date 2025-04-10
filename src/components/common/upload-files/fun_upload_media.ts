@@ -1,4 +1,4 @@
-export const handle_Upload_Image = async (
+export const handle_Upload_Media = async (
   file: File,
   fun_startUpload: (files: File[]) => Promise<any> // Pass startUpload as an argument
 ): Promise<string | null> => {
@@ -6,7 +6,7 @@ export const handle_Upload_Image = async (
     const uploadedFiles = await fun_startUpload([file]);
     const url = uploadedFiles?.[0]?.ufsUrl;
     if (url) {
-      alert(`Uploaded Successfully: ${url}`);
+      // alert(`Uploaded Successfully: ${url}`);
       return url;
     }
     throw new Error('Upload failed');

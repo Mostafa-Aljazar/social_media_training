@@ -1,6 +1,5 @@
 import { noAvatar } from '@/assets/common';
-import { ActionIcon, Box, Group, ScrollArea, Stack, Text } from '@mantine/core';
-import { Camera } from 'lucide-react';
+import { Box, Group, ScrollArea, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 import Add_Story from './Add_Story';

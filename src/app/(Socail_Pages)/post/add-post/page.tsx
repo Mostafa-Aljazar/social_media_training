@@ -1,4 +1,4 @@
-import Create_Post_Component from '@/components/home/create-post';
+import Create_Post_Component from '@/components/home/story/create-post';
 
 export default function Add_Post() {
   return (

@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { noAvatar, poll } from '@/assets/common';
-import { Image as ImageIcon, ImagePlay, Upload } from 'lucide-react';
 import NextImage from 'next/image';
 import { Avatar, Button, Group, Textarea, Stack } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Upload_Media from './Upload_Media';
-import { handle_Upload_Image } from './fun_upload_media'; // Ensure this path is correct
+import { handle_Upload_Media } from './fun_upload_media'; // Ensure this path is correct
 import { useUploadThing } from '@/utility/uploadthing';
 
 interface FormValues {
@@ -40,7 +39,7 @@ export default function Upload_Form() {
 
     if (file_media) {
       setUploading(true);
-      finalMediaUrl = await handle_Upload_Image(file_media, startUpload); // Adjust this function if it handles videos differently
+      finalMediaUrl = await handle_Upload_Media(file_media, startUpload); // Adjust this function if it handles videos differently
       if (!finalMediaUrl) {
         // console.log('🚀 ~ handleSubmit ~ finalMediaUrl:', finalMediaUrl);
         setUploading(false);

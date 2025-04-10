@@ -1,28 +1,23 @@
 'use client';
-import React, { useState } from 'react';
 import { ActionIcon, Box, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 import { noAvatar } from '@/assets/common';
-import { Camera } from 'lucide-react';
-import Upload_Media from '../common/upload-files/Upload_Media';
-import { Image as ImageIcon, ImagePlay } from 'lucide-react';
+import { Image as ImageIcon } from 'lucide-react';
+import { useDisclosure } from '@mantine/hooks';
+import Add_Story_Modal from './Add_Story_Modal';
 
 export default function Add_Story() {
-  const [file_media, setFileMedia] = useState<File | null>(null);
-  console.log('🚀 ~ Add_Story ~ file_media:', file_media);
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
-    <Stack align='center' className='relative' gap={0}>
-      <Upload_Media
-        File_Type='image'
-        setFileObject={setFileMedia}
-        classes=' relative'
-      >
+    <>
+      <Stack align='center' className='relative' gap={0}>
         <Box
-          className='relative bg-gray-300 border-2 border-Gray rounded-full w-16 overflow-hidden'
+          className='relative bg-gray-300 border-2 border-Gray rounded-full w-16 overflow-hidden cursor-pointer'
           style={{
             aspectRatio: '1 / 1',
           }}
+          onClick={open}
         >
           <Image
             src={noAvatar}
@@ -43,10 +38,12 @@ export default function Add_Story() {
             />
           </ActionIcon>
         </Box>
-      </Upload_Media>
-      <Text fw={300} fz={'sm'}>
-        add story
-      </Text>
-    </Stack>
+        <Text fw={300} fz={'sm'}>
+          add story
+        </Text>
+      </Stack>
+
+      <Add_Story_Modal opened={opened} close={close} />
+    </>
   );
 }

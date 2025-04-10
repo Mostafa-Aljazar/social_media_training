@@ -1,5 +1,4 @@
 import Upload_Form from '@/components/common/upload-files/Upload_Form';
-import Upload_Image from '@/components/common/upload-files/Upload_Media';
 import { Stack } from '@mantine/core';
 import React from 'react';
 

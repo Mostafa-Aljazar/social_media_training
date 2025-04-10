@@ -27,7 +27,7 @@ export default function Upload_Form() {
   });
 
   const [file_media, setFileMedia] = useState<File | null>(null);
-  console.log('🚀 ~ Upload_Form ~ file_media:', file_media);
+  // console.log('🚀 ~ Upload_Form ~ file_media:', file_media);
   const [uploading, setUploading] = useState(false);
   const { startUpload } = useUploadThing('mediaUploader');
 
@@ -42,7 +42,7 @@ export default function Upload_Form() {
       setUploading(true);
       finalMediaUrl = await handle_Upload_Image(file_media, startUpload); // Adjust this function if it handles videos differently
       if (!finalMediaUrl) {
-        console.log('🚀 ~ handleSubmit ~ finalMediaUrl:', finalMediaUrl);
+        // console.log('🚀 ~ handleSubmit ~ finalMediaUrl:', finalMediaUrl);
         setUploading(false);
         return; // Exit if upload failed
       }

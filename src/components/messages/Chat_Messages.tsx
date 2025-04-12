@@ -1,8 +1,16 @@
+'use client';
 import { noAvatar, noCover } from '@/assets/common';
-import { ActionIcon, Center, Group, Stack, Text } from '@mantine/core';
-import { EllipsisVertical, Trash2 } from 'lucide-react';
+import {
+  ActionIcon,
+  Button,
+  Divider,
+  Group,
+  Popover,
+  Stack,
+  Text,
+} from '@mantine/core';
+import { EllipsisVertical, Pencil, Trash2 } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
 
 export default function Chat_Messages() {
   const messages = [
@@ -37,28 +45,71 @@ export default function Chat_Messages() {
               className='border-1 border-purple-500 rounded-full'
             />
             <Stack gap={0} className='flex-grow'>
-              <Image
-                src={noCover}
-                alt='noCover'
-                width={320}
-                className='border-1 border-Gray rounded-md object-contain'
-              />
-              <Group
-                wrap='nowrap'
-                align='flex-start'
-                p={5}
-                className='bg-gray-600 rounded-md rounded-bl-none w-fit max-w-xs'
+              <Stack
+                gap={0}
+                className='!relative bg-gray-600 rounded-md rounded-bl-none w-fit max-w-xs overflow-hidden'
               >
-                <Text fw={500} fz='sm' c='white'>
+                <Popover position='right-start' offset={10}>
+                  <Popover.Target>
+                    <ActionIcon
+                      className='top-2 right-1.5 !absolute !bg-transparent'
+                      size={'xs'}
+                    >
+                      <EllipsisVertical
+                        size={18}
+                        className='text-Gray hover:text-purple-500'
+                      />
+                    </ActionIcon>
+                  </Popover.Target>
+
+                  <Popover.Dropdown
+                    p={0}
+                    className='!bg-primary !border-Gray !rounded-sm'
+                    w={100}
+                  >
+                    <Stack gap={0} w={'100%'}>
+                      <Button
+                        variant='transparent'
+                        p={0}
+                        radius={0}
+                        c={'white'}
+                        className='hover:!text-red-500'
+                      >
+                        <Group w={100} justify='space-between' p={5}>
+                          <Text fw={400} fz={'sm'}>
+                            Delete
+                          </Text>
+                          <Trash2 size={15} />
+                        </Group>
+                      </Button>
+                      <Divider h={1} w={'100%'} />
+                      <Button
+                        variant='transparent'
+                        p={0}
+                        radius={0}
+                        c={'white'}
+                        className='hover:!text-purple-500'
+                      >
+                        <Group w={100} justify='space-between' p={5}>
+                          <Text fw={400} fz={'sm'}>
+                            Edit
+                          </Text>
+                          <Pencil size={15} />
+                        </Group>
+                      </Button>
+                    </Stack>
+                  </Popover.Dropdown>
+                </Popover>
+                <Image
+                  src={noCover}
+                  alt='noCover'
+                  width={320}
+                  className='border-1 border-Gray object-contain'
+                />
+                <Text fw={500} fz='sm' c='white' ta='start' p={5}>
                   {messages[0].text}
                 </Text>
-                <ActionIcon className='!bg-transparent' size={'xs'}>
-                  <EllipsisVertical
-                    size={18}
-                    className='text-gray-400 hover:text-purple-500'
-                  />
-                </ActionIcon>
-              </Group>
+              </Stack>
               <Text fw={300} fz='xs' c='dimmed' truncate='end'>
                 {messages[0].timestamp}
               </Text>

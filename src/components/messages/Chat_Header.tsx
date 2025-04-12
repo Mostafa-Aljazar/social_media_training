@@ -16,7 +16,7 @@ export default function Chat_Header() {
       top={-1}
       left={0}
       pos={'sticky'}
-      className='bg-primary shadow-2xl'
+      className='!z-50 bg-primary shadow-2xl'
     >
       <ActionIcon
         className='!bg-transparent'

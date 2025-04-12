@@ -6,5 +6,5 @@ export const ROUTES = {
   BOOKMARKS: '/bookmarks',
   PROFILE: '/profile',
   ADD_POST: '/post/add-post',
-  MORE: '/more',
+  SETTINGS: '/settings',
 } as const;

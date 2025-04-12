@@ -35,7 +35,7 @@ export default function Mantine_Layout({
       <Navbar />
 
       <AppShell.Main
-        mt={pathname.includes(ROUTES.MESSAGES) ? 0 : 60}
+        // mt={pathname.includes(ROUTES.MESSAGES) ? 0 : 60}
         className='w-full'
       >
         {children}

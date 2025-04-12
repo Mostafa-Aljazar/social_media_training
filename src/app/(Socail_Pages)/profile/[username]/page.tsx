@@ -10,7 +10,7 @@ export default async function Profile({
 }) {
   const { username } = await params;
   return (
-    <Stack className='' p={0} gap={10}>
+    <Stack className='' p={0} pt={60} gap={10}>
       <Profile_Details />
       <Profile_Tabs />
       <Feed />

@@ -13,6 +13,7 @@ export default function Home() {
       justify='center'
       w={'100%'}
       h={'100%'}
+      pt={60}
       className='!bg-primary'
     >
       <Stories />

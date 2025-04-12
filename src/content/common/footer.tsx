@@ -9,6 +9,7 @@ import {
   CircleUserRound,
   SquarePen,
   X,
+  Settings,
 } from 'lucide-react';
 
 interface Footer_Item {
@@ -39,5 +40,11 @@ export const Footer_Menu_List: Footer_Item[] = [
     name: 'Add Post',
     link: ROUTES.ADD_POST,
     icon: <SquarePen size={20} />,
+  },
+  {
+    id: 7,
+    name: 'Settings',
+    link: ROUTES.SETTINGS,
+    icon: <Settings size={20} />,
   },
 ] as const;

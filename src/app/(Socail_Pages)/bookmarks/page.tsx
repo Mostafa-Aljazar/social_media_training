@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Bookmarks() {
   return (
-    <Stack p={10} gap={10} w={'100%'}>
+    <Stack p={10} pt={{ base: 70, md: 20 }} gap={10} w={'100%'}>
       <Post />
       <Post />
       <Post />

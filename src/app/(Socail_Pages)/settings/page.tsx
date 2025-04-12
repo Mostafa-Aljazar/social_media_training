@@ -1,11 +1,9 @@
 'use client';
 import { noAvatar, noCover } from '@/assets/common';
 import {
-  ActionIcon,
   AspectRatio,
   Box,
   Button,
-  Flex,
   Group,
   Radio,
   Stack,
@@ -13,17 +11,10 @@ import {
   Title,
 } from '@mantine/core';
 import Image from 'next/image';
-import React from 'react';
-import {
-  Calendar,
-  Link as Link_Icon,
-  Mail,
-  MapPin,
-  Search,
-} from 'lucide-react';
+
 export default function page() {
   return (
-    <Stack align='' pb={30}>
+    <Stack pt={{ base: 60, md: 0 }} gap={10}>
       {/* Account Info*/}
       <Stack p={0} gap={0}>
         <Stack p={0} gap={0}>
@@ -172,7 +163,6 @@ export default function page() {
             radius='md'
             p={0}
             fw={500}
-            // className='!w-fit'
           >
             Open profile
           </Button>

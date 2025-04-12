@@ -8,7 +8,7 @@ import React from 'react';
 
 export default function Explore() {
   return (
-    <Stack className='bg-primary p-3 w-full h-full'>
+    <Stack pt={{ base: 70, md: 20 }} className='bg-primary p-3 w-full h-full'>
       <Search_Component />
       <Search_Tabs />
       {recommendations.map((user) => (

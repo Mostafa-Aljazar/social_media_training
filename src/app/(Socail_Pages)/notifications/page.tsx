@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 export default function Notifications() {
   return (
-    <Stack p={10} gap={10} w={'100%'}>
+    <Stack p={10} pt={{ base: 70, md: 20 }} gap={10} w={'100%'}>
       <Follow_You />
       <Liked_Post />
       <Repost_You />

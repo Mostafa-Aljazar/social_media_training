@@ -30,19 +30,21 @@ export default function Mantine_Layout({
       }}
       className='w-full min-h-screen'
     >
-      {!pathname.includes(ROUTES.MESSAGES) && <Header />}
+      <Header />
 
       <Navbar />
 
       <AppShell.Main
-        // mt={pathname.includes(ROUTES.MESSAGES) ? 0 : 60}
+        // pt={pathname.includes(ROUTES.MESSAGES) ? 0 : 60}
         className='w-full'
       >
         {children}
       </AppShell.Main>
 
-      {!pathname.includes(ROUTES.MESSAGES) && <Aside />}
-      {!pathname.includes(ROUTES.MESSAGES) && <Footer />}
+      <Aside />
+      <Footer />
+      {/* {!pathname.includes(ROUTES.MESSAGES) && <Aside />} */}
+      {/* {!pathname.includes(ROUTES.MESSAGES) && <Footer />} */}
     </AppShell>
   );
 }

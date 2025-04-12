@@ -5,13 +5,26 @@ import Image from 'next/image';
 import Header_Tabs from './Header_Tabs';
 import { usePathname } from 'next/navigation';
 import { ROUTES } from '@/content/routes';
+import { cn } from '@/utility/cn';
 
 export default function Header() {
   const path = usePathname();
   return (
     <AppShell.Header
       zIndex={50}
-      className='!bg-red-500/90 shadow-2xl !border-[#363636] !border-b-[1px]'
+      className={cn(
+        '!bg-primary/90 shadow-2xl !border-[#363636] !border-b-[1px]',
+        `${
+          path.includes(ROUTES.EXPLORE) ||
+          path.includes(ROUTES.NOTIFICATION) ||
+          path.includes(ROUTES.BOOKMARKS) ||
+          path.includes(ROUTES.PROFILE) ||
+          path.includes(ROUTES.ADD_POST) ||
+          path.includes(ROUTES.SETTINGS)
+            ? 'md:!hidden'
+            : ''
+        }`
+      )}
       hidden={path.includes(ROUTES.MESSAGES)}
     >
       <Flex justify='space-between' align='center' h='100%' px='md'>

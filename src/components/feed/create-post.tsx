@@ -92,7 +92,7 @@ export default function Create_Post_Component() {
           <Textarea
             placeholder='What is happening?!'
             autosize
-            minRows={2}
+            minRows={3}
             maxRows={10}
             resize='vertical'
             {...form.getInputProps('post_text')}

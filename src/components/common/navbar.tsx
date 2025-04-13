@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { logo, noAvatar } from '@/assets/common';
+import { ASMAR, asmar, logo, noAvatar } from '@/assets/common';
 import { AppShell, Stack, Text } from '@mantine/core';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/utility/cn';
@@ -25,10 +25,10 @@ export default function Navbar() {
           aria-label='Home'
         >
           <Image
-            src={logo}
-            alt='Twitter logo'
-            width={75}
-            height={75}
+            src={ASMAR}
+            alt='asmar logo'
+            width={100}
+            height={100}
             className='rounded-full'
             priority
           />

@@ -1,5 +1,5 @@
 'use client';
-import { logo } from '@/assets/common';
+import { ASMAR, asmar, logo } from '@/assets/common';
 import { AppShell, Flex, Group, Stack } from '@mantine/core';
 import Image from 'next/image';
 import Header_Tabs from './Header_Tabs';
@@ -30,7 +30,7 @@ export default function Header() {
       <Flex justify='space-between' align='center' h='100%' px='md'>
         <Group gap='sm' align='center' hiddenFrom='md'>
           <Image
-            src={logo}
+            src={ASMAR}
             alt='Twitter logo'
             width={60}
             height={60}

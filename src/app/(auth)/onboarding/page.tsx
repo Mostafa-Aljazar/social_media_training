@@ -91,180 +91,180 @@ export default function Page() {
   });
 
   return (
-    <Flex
-      direction={{ base: 'column', md: 'row' }}
-      align={'center'}
-      justify={'center'}
-      wrap='nowrap'
-      gap={0}
+    // <Flex
+    //   direction={{ base: 'column', md: 'row' }}
+    //   align={'center'}
+    //   justify={'center'}
+    //   wrap='nowrap'
+    //   gap={0}
+    // >
+    //   <Stack flex={1} justify='center' align='center' pt={{ base: 30, md: 0 }}>
+    //     <Image src={ASMAR} alt='asmar' className='w-40 md:w-60 lg:w-86' />
+    //     <Text
+    //       fw={600}
+    //       fz={{ base: 25, md: 35, lg: 50 }}
+    //       className='tracking-wider'
+    //     >
+    //       Onboarding
+    //     </Text>
+    //   </Stack>
+    <form
+      onSubmit={handleSubmit}
+      className='flex flex-1 justify-center md:justify-start items-center md:items-start gap-10 w-full'
     >
-      <Stack flex={1} justify='center' align='center' pt={{ base: 30, md: 0 }}>
-        <Image src={ASMAR} alt='asmar' className='w-40 md:w-60 lg:w-86' />
-        <Text
-          fw={600}
-          fz={{ base: 25, md: 35, lg: 50 }}
-          className='tracking-wider'
-        >
-          Onboarding
-        </Text>
-      </Stack>
-      <form
-        onSubmit={handleSubmit}
-        className='flex flex-1 justify-center md:justify-start items-center md:items-start gap-10 w-full'
+      <Stack
+        gap={40}
+        p={12}
+        w={{ base: '100%', sm: '80%', md: '90%', lg: '80%' }}
       >
-        <Stack
-          gap={40}
-          p={12}
-          w={{ base: '100%', sm: '80%', md: '90%', lg: '80%' }}
-        >
-          <Box className='relative w-full'>
-            <Flex
-              justify='center'
-              align='center'
-              pos='relative'
-              w='100%'
-              h={200}
-              className='border-2 border-gray-500 rounded-lg overflow-hidden'
-            >
-              {coverImage ? (
-                <img
-                  src={URL.createObjectURL(coverImage)}
-                  alt='Cover'
-                  className='w-full h-full !object-contain'
-                />
-              ) : (
-                <Text pb={100} fw={600} fz={20} c={'gray'}>
-                  Add Cover Image
-                </Text>
-              )}
+        <Box className='relative w-full'>
+          <Flex
+            justify='center'
+            align='center'
+            pos='relative'
+            w='100%'
+            h={200}
+            className='border-2 border-gray-500 rounded-lg overflow-hidden'
+          >
+            {coverImage ? (
+              <img
+                src={URL.createObjectURL(coverImage)}
+                alt='Cover'
+                className='w-full h-full !object-contain'
+              />
+            ) : (
+              <Text pb={100} fw={600} fz={20} c={'gray'}>
+                Add Cover Image
+              </Text>
+            )}
 
-              <Upload_Media File_Type='image' setFileObject={setCoverImage}>
-                <ActionIcon
-                  variant='outline'
-                  color='gray.5'
-                  radius='100%'
-                  pos='absolute'
-                  left='50%'
-                  top='50%'
-                  w={35}
-                  h={35}
-                  className='border-1 border-Gray rounded-full -translate-x-1/2 -translate-y-1/2'
-                  component='label'
-                >
-                  <Camera size={20} />
-                </ActionIcon>
-              </Upload_Media>
-            </Flex>
+            <Upload_Media File_Type='image' setFileObject={setCoverImage}>
+              <ActionIcon
+                variant='outline'
+                color='gray.5'
+                radius='100%'
+                pos='absolute'
+                left='50%'
+                top='50%'
+                w={35}
+                h={35}
+                className='border-1 border-Gray rounded-full -translate-x-1/2 -translate-y-1/2'
+                component='label'
+              >
+                <Camera size={20} />
+              </ActionIcon>
+            </Upload_Media>
+          </Flex>
 
-            <Flex
-              justify='center'
-              align='center'
-              pos='absolute'
-              left='50%'
-              w={100}
-              h={100}
-              className='bg-primary border-2 border-gray-500 rounded-full w-20 overflow-hidden -translate-x-1/2 -translate-y-1/2'
-            >
-              {avatarImage ? (
-                <Image
-                  src={URL.createObjectURL(avatarImage)}
-                  alt='Avatar'
-                  className='!object-fill'
-                  width={100}
-                  height={100}
-                />
-              ) : (
-                <Text pb={50} fw={600} fz={16} c={'gray'}>
-                  Avatar
-                </Text>
-              )}
-              <Upload_Media File_Type='image' setFileObject={setAvatarImage}>
-                <ActionIcon
-                  variant='outline'
-                  color='gray.5'
-                  radius='100%'
-                  pos='absolute'
-                  left='50%'
-                  top='50%'
-                  w={30}
-                  h={30}
-                  className='border-1 border-Gray rounded-full -translate-x-1/2 -translate-y-1/2'
-                  component='label'
-                >
-                  <Camera size={20} />
-                </ActionIcon>
-              </Upload_Media>
-            </Flex>
-          </Box>
+          <Flex
+            justify='center'
+            align='center'
+            pos='absolute'
+            left='50%'
+            w={100}
+            h={100}
+            className='bg-primary border-2 border-gray-500 rounded-full w-20 overflow-hidden -translate-x-1/2 -translate-y-1/2'
+          >
+            {avatarImage ? (
+              <Image
+                src={URL.createObjectURL(avatarImage)}
+                alt='Avatar'
+                className='!object-fill'
+                width={100}
+                height={100}
+              />
+            ) : (
+              <Text pb={50} fw={600} fz={16} c={'gray'}>
+                Avatar
+              </Text>
+            )}
+            <Upload_Media File_Type='image' setFileObject={setAvatarImage}>
+              <ActionIcon
+                variant='outline'
+                color='gray.5'
+                radius='100%'
+                pos='absolute'
+                left='50%'
+                top='50%'
+                w={30}
+                h={30}
+                className='border-1 border-Gray rounded-full -translate-x-1/2 -translate-y-1/2'
+                component='label'
+              >
+                <Camera size={20} />
+              </ActionIcon>
+            </Upload_Media>
+          </Flex>
+        </Box>
 
-          <Stack gap={10}>
-            <TextInput
-              radius='sm'
-              label={
-                <Text fz={16} fw={600} c='gray'>
-                  Username
-                </Text>
-              }
-              placeholder='Enter username...'
-              {...form.getInputProps('username')}
-            />
-            <TextInput
-              radius='sm'
-              label={
-                <Text fz={16} fw={600} c='gray'>
-                  Name
-                </Text>
-              }
-              placeholder='Enter name...'
-              {...form.getInputProps('name')}
-            />
-            <Textarea
-              radius='sm'
-              label={
-                <Text fz={16} fw={600} c='gray'>
-                  Bio
-                </Text>
-              }
-              placeholder='Enter bio...'
-              minRows={2}
-              maxRows={4}
-              {...form.getInputProps('bio')}
-            />
-            <TextInput
-              radius='sm'
-              label={
-                <Text fz={16} fw={600} c='gray'>
-                  Location
-                </Text>
-              }
-              placeholder='Enter location...'
-              {...form.getInputProps('location')}
-            />
-            <TextInput
-              radius='sm'
-              label={
-                <Text fz={16} fw={600} c='gray'>
-                  Link
-                </Text>
-              }
-              placeholder='Enter Link...'
-              {...form.getInputProps('link')}
-            />
-            <Button
-              type='submit'
-              variant='filled'
-              color='grape'
-              className='!text-primary'
-              loading={uploading}
-              mt={10}
-              fw={600}
-              fz={20}
-            >
-              Save
-            </Button>
-          </Stack>
+        <Stack gap={10}>
+          <TextInput
+            radius='sm'
+            label={
+              <Text fz={16} fw={600} c='gray'>
+                Username
+              </Text>
+            }
+            placeholder='Enter username...'
+            {...form.getInputProps('username')}
+          />
+          <TextInput
+            radius='sm'
+            label={
+              <Text fz={16} fw={600} c='gray'>
+                Name
+              </Text>
+            }
+            placeholder='Enter name...'
+            {...form.getInputProps('name')}
+          />
+          <Textarea
+            radius='sm'
+            label={
+              <Text fz={16} fw={600} c='gray'>
+                Bio
+              </Text>
+            }
+            placeholder='Enter bio...'
+            minRows={2}
+            maxRows={4}
+            {...form.getInputProps('bio')}
+          />
+          <TextInput
+            radius='sm'
+            label={
+              <Text fz={16} fw={600} c='gray'>
+                Location
+              </Text>
+            }
+            placeholder='Enter location...'
+            {...form.getInputProps('location')}
+          />
+          <TextInput
+            radius='sm'
+            label={
+              <Text fz={16} fw={600} c='gray'>
+                Link
+              </Text>
+            }
+            placeholder='Enter Link...'
+            {...form.getInputProps('link')}
+          />
+          <Button
+            type='submit'
+            variant='filled'
+            color='grape'
+            className='!text-primary'
+            loading={uploading}
+            mt={10}
+            fw={600}
+            fz={20}
+          >
+            Save
+          </Button>
         </Stack>
-      </form>
-    </Flex>
+      </Stack>
+    </form>
+    // </Flex>
   );
 }

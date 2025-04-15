@@ -14,7 +14,10 @@
     "@mantine/form": "^7.17.3",
     "@mantine/hooks": "^7.17.3",
     "@mantine/modals": "^7.17.3",
+    "@prisma/client": "^6.6.0",
+    "@supabase/supabase-js": "^2.49.4",
     "@uploadthing/react": "^7.3.0",
+    "better-auth": "^1.2.7",
     "clsx": "^2.1.1",
     "lucide-react": "^0.487.0",
     "mantine-form-zod-resolver": "^1.1.0",
@@ -34,6 +37,7 @@
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.5.3",
+    "prisma": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

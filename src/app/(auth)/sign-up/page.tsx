@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Button,
   Flex,
-  Group,
   PasswordInput,
   Stack,
   Text,
@@ -13,11 +12,13 @@ import {
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { useForm, zodResolver } from '@mantine/form';
-import { Chrome, ChromeIcon, Github } from 'lucide-react';
 import Image from 'next/image';
-import { ASMAR } from '@/assets/common';
 import Link from 'next/link';
+import { ASMAR } from '@/assets/common';
 import { AUT_ROUTES } from '@/content/routes';
+import { authClient } from '@/lib/auth-client';
+import { Chrome, Github } from 'lucide-react';
+import { sendEmail } from '@/lib/send-mail';
 
 const signUpSchema = z
   .object({
@@ -48,30 +49,132 @@ export default function SignUpPage() {
     validate: zodResolver(signUpSchema),
   });
 
-  const handleSubmit = form.onSubmit(async (values: typeof form.values) => {
+  useEffect(() => {
+    // Check if user is already signed in
+    authClient.getSession().then(({ data }) => {
+      if (data?.session) {
+        router.push(AUT_ROUTES.ONBOARDING);
+      }
+    });
+  }, [router]);
+
+  const handleSubmit = form.onSubmit(async (values) => {
     setError(null);
     setLoading(true);
+
     try {
-      // Replace with your authentication logic
-      // const { data, error: authError } = await signUp({
-      //   email: values.email,
-      //   password: values.password,
-      //   name: values.name,
-      // });
-      // if (authError) {
-      //   setError(authError.message || 'Failed to sign up');
-      // } else if (data) {
-      //   router.push('/dashboard');
-      // }
-      console.log('Form values:', values); // Simulate submission
-      // router.push('/dashboard'); // Simulate success
+      const { data, error: authError } = await authClient.signUp.email({
+        email: values.email,
+        password: values.password,
+        name: values.name,
+      });
+
+      if (authError) {
+        console.error('Signup error:', authError);
+        setError(authError.message || 'Failed to sign up');
+        return;
+      } else if (data) {
+        console.log('🚀 ~ handleSubmit ~ data:', data);
+        // Since autoSignIn is true, redirect to onboarding
+        router.push(AUT_ROUTES.ONBOARDING);
+      }
+      // Check if we have a session (autoSignIn should create one)
+      const { data: sessionData } = await authClient.getSession();
+      console.log('🚀 ~ handleSubmit ~ sessionData:', sessionData);
+
+      if (sessionData?.session) {
+        router.push(AUT_ROUTES.ONBOARDING);
+      } else {
+        // If autoSignIn didn't work, try manual login
+        const { data: loginData, error: loginError } =
+          await authClient.signIn.email({
+            email: values.email,
+            password: values.password,
+          });
+
+        if (loginError) {
+          setError(
+            'Account created but failed to login. Please try to login manually.'
+          );
+        } else if (loginData) {
+          console.log('🚀 ~ handleSubmit ~ loginData:', loginData);
+          router.push(AUT_ROUTES.ONBOARDING);
+        }
+      }
     } catch (err) {
-      setError('An unexpected error occurred');
+      console.error('Unexpected signup error:', err);
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
+      console.log('🚀 ~ handleSubmit ~ finally:', values);
     }
   });
 
+  // const signInWithGithub = async () => {
+  //   setError(null);
+  //   setLoading(true);
+  //   try {
+  //     const { data, error: authError } = await authClient.signIn.social({
+  //       provider: 'github',
+  //     });
+
+  //     if (authError) {
+  //       console.error('Signup error with Github:', authError);
+  //       setError(authError.message || 'Failed to sign up with Github');
+  //       return;
+  //     } else if (data) {
+  //       console.log('🚀 ~signInWithGithub ~ data  with Github:', data);
+  //       // Since autoSignIn is true, redirect to onboarding
+  //       router.push(AUT_ROUTES.ONBOARDING);
+  //     }
+  //   } catch (err) {
+  //     console.error('Unexpected signup error with Github:', err);
+  //     setError('Something went wrong. Please try again.');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  const signInWithGithub = async () => {
+    setError(null);
+    setLoading(true);
+
+    try {
+      const { data, error } = await authClient.signIn.social({
+        provider: 'github',
+
+        // options: {
+        //   redirectTo: AUT_ROUTES.ONBOARDING,
+        // },
+      });
+
+      if (error) {
+        setError(error.message || 'Failed to sign up with GitHub');
+        return;
+      }
+
+      // Better Auth handles redirect automatically, but confirm session
+      if (data) {
+        console.log('🚀 ~signInWithGithub ~ data  with Github:', data);
+
+        router.push(AUT_ROUTES.ONBOARDING);
+      }
+    } catch (err) {
+      setError('Something went wrong with GitHub sign-up. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const sendEmailFun = async () => {
+    const send = await sendEmail({
+      to: '233651@ppu.edu.ps',
+      subject: 'Hello',
+      text: 'Hello from my app!',
+      html: '<h1>Hello from my app!</h1>',
+    });
+    console.log('🚀 ~ sendEmailFun ~ send:', send);
+  };
   return (
     <Flex
       direction={{ base: 'column', md: 'row' }}
@@ -101,7 +204,7 @@ export default function SignUpPage() {
           >
             <Text
               fw={600}
-              fz={{ base: 25, md: 35, lg: 50 }}
+              fz={{ base: '25', md: '35', lg: '50' }}
               className='tracking-wider'
               ta={'center'}
             >
@@ -159,6 +262,7 @@ export default function SignUpPage() {
               variant='filled'
               color='grape'
               loading={loading}
+              disabled={loading}
               fw={600}
               fz={18}
               radius='sm'
@@ -181,8 +285,11 @@ export default function SignUpPage() {
                 leftSection={<Github size={22} />}
                 w={'100%'}
                 p={0}
+                loading={loading}
+                disabled={loading}
+                onClick={signInWithGithub}
               >
-                Sign up with GitHub
+                Continue with GitHub
               </Button>
               <Button
                 variant='outline'
@@ -194,8 +301,9 @@ export default function SignUpPage() {
                 leftSection={<Chrome size={22} />}
                 w={'100%'}
                 p={0}
+                onClick={sendEmailFun}
               >
-                Sign up with Google
+                Continue with Google
               </Button>
             </Flex>
             <Text fz={14} c='dimmed' ta='center'>

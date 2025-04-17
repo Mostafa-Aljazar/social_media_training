@@ -18,6 +18,7 @@ import Image from 'next/image';
 import { ASMAR } from '@/assets/common';
 import Link from 'next/link';
 import { AUT_ROUTES } from '@/content/routes';
+import { authClient } from '@/lib/auth-client';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -42,18 +43,21 @@ export default function LoginPage() {
     setLoading(true);
     try {
       // Replace with your authentication logic
-      // const { data, error: authError } = await signUp({
-      //   email: values.email,
-      //   password: values.password,
-      //   name: values.name,
-      // });
-      // if (authError) {
-      //   setError(authError.message || 'Failed to sign up');
-      // } else if (data) {
-      //   router.push('/dashboard');
-      // }
-      console.log('Form values:', values); // Simulate submission
-      // router.push('/dashboard'); // Simulate success
+      const { data, error: authError } = await authClient.signIn.email({
+        email: values.email,
+        password: values.password,
+      });
+      if (authError) {
+        console.error('SignIn error:', authError);
+        setError(authError.message || 'Failed to SignIn');
+        return;
+      }
+      if (data) {
+        console.log('🚀 ~ handleSubmit ~ data:', data);
+
+        // Since autoSignIn is true, redirect to onboarding
+        router.push(AUT_ROUTES.ONBOARDING);
+      }
     } catch (err) {
       setError('An unexpected error occurred');
     } finally {
